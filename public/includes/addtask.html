@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add new Task</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo</title>
-    <link rel="stylesheet" href="./css/output.css" />
+    <link rel="stylesheet" href="../css/output.css" />
 
     <!-- flow bite css -->
     <link
@@ -122,43 +130,51 @@
       </div>
     </aside>
 
-    <div class="p-4 mt-6 sm:ml-64" id="task-container">
+    <div class="p-4 mt-6 sm:ml-64" id="add-task">
       <!-- todo content -->
 
-      <div
+      <!-- <div
         class="flex items-center justify-between mb-4 border-b-2 border-b-gray-200 py-4"
       >
         <h2 class="text-2xl font-bold">To-Do</h2>
-      </div>
+      </div> -->
+      <!-- textarea -->
+      <div class="mb-4">
+        <label for="task" class="block mb-2 text-3xl font-medium text-gray-600"
+          >Task</label
+        >
+        <textarea
+          id="task"
+          class="w-full h-50 px-3 py-2 text-sm border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
+          placeholder="Enter your task"
+        ></textarea>
+
 
       <!-- actions -->
       <div class="py-4 flex">
         <!-- new task -->
-        
-
-        <a href="includes/addtask.html"><button
+      
+        <a href="../">
+          <button
+        id="new-task"
           class="px-2 py-2 text-sm font-medium text-white bg-indigo-500 rounded-lg hover:bg-indigo-600 flex items-center justify-between"
         >
           <i class="bi bi-plus" style="font-size: 25px"></i>
-          New Task
-        </button> </a>
-        <!-- filter -->
-
-        <button
-          class="mx-2 px-2 py-2 text-sm font-medium text-gray-500 border-2 border-gray-300 rounded-lg flex items-center justify-start"
-          onclick="window.location.reload()"
-        >
-          <i class="bi bi-funnel" style="font-size: 18px"></i>
-          Filters
+          Add Task
         </button>
+        </a>
+       
       </div>
 
      <!-- todo items -->
     </div>
 
     <!-- js  -->
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
   </body>
+</html>
+
+</body>
 </html>
