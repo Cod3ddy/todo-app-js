@@ -1,4 +1,4 @@
-const newTask = document.getElementById("new-task");
+// const newTask = document.getElementById("new-task");
 const taskContainer = document.getElementById("task-container");
 
 // object for months
@@ -21,35 +21,39 @@ const months = {
 getTasks();
 
 // add new task
-newTask.addEventListener("click", async () => {
-  console.log("new task clicked");
-  const task = document.getElementById("task").value;
+// newTask.addEventListener("click", async () => {
+//   console.log("new task clicked");
+//   const task = document.getElementById("task").value;
 
-  // for to-do list [task, timeStamp, status]
-  const data = {
-    task: task,
-    timeStamp: "",
-    status: "0",
-  };
+//   // for to-do list [task, timeStamp, status]
+//   const data = {
+//     task: task,
+//     timeStamp: "",
+//     status: "0",
+//   };
 
-  // fetch data from server
+//   // fetch data from server
 
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  };
+//   const options = {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(data),
+//   };
 
-  const response = await fetch("/api", options);
-  const json = await response.json();
-  //   console.log(json);
-});
+//   const response = await fetch("/api", options);
+//   const json = await response.json();
+//   //   console.log(json);
+// });
 
 async function getTasks() {
   const response = await fetch("/api");
   const data = await response.json();
+
+  if (data.length < 1) {
+    console.log("No data found");
+  }
 
   const todoItems = document.createElement("div");
   todoItems.className = "todo-items";
