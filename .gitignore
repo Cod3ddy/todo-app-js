@@ -1,2 +1,9 @@
 node_modules
+
+# text files
 *.txt
+
+# environment file
+.env
+
+# ignore text files 
