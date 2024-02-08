@@ -48,7 +48,7 @@ getTasks();
 // });
 
 async function getTasks() {
-  const response = await fetch("/api");
+  const response = await fetch("/api/tasks");
   const data = await response.json();
 
   if (data.length < 1) {

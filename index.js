@@ -68,3 +68,13 @@ app.post("/api/tasks", async (request, response) => {
     response.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+app.get("/api/tasks", async (request, response) => {
+  try {
+    const tasks = await Task.find();
+    response.json(tasks);
+  } catch (error) {
+    console.error(error);
+    response.status(500).json({ error: "Internal Server Error" });
+  }
+});
