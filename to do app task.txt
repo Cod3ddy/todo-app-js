@@ -1,3 +1,0 @@
-- delete post after completing it 
-- offer delete post before delete
-- add mongodb
