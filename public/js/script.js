@@ -63,34 +63,35 @@ async function getTasks() {
     const timeStamp = task.timeStamp;
     const date = new Date(timeStamp);
 
-    const month = date.getMonth();
-    console.log(months[month]);
+      const month = date.getMonth();
+      const day = date.getDate();
+      console.log(day);
 
-    //  create to do items
-    const firstDiv = document.createElement("div");
-    firstDiv.className =
-      "p-4 mb-4 border-2 border-gray-300 rounded-lg dark:border-gray-700 grid grid-cols-10 gap-4 hover:bg-gray-100 dark:hover:bg-gray-700";
+      //  create to do items
+      const firstDiv = document.createElement("div");
+      firstDiv.className =
+        "p-4 mb-4 border-2 border-gray-300 rounded-lg dark:border-gray-700 grid grid-cols-10 gap-4 hover:bg-gray-100 dark:hover:bg-gray-700";
 
-    const checkDiv = document.createElement("div");
-    checkDiv.className = "flex items-center col-span-1";
+      const checkDiv = document.createElement("div");
+      checkDiv.className = "flex items-center col-span-1";
 
-    const checkBox = document.createElement("input");
-    checkBox.type = "checkbox";
-    checkBox.value = "";
-    checkBox.className =
-      "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600";
+      const checkBox = document.createElement("input");
+      checkBox.type = "checkbox";
+      checkBox.value = "";
+      checkBox.className =
+        "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600";
 
-    const taskDiv = document.createElement("div");
-    taskDiv.className = "col-span-9";
+      const taskDiv = document.createElement("div");
+      taskDiv.className = "col-span-9";
 
-    const taskTitle = document.createElement("h2");
-    taskTitle.className = "flex justify-start font-bold";
-    taskTitle.textContent = task.task;
+      const taskTitle = document.createElement("h2");
+      taskTitle.className = "flex justify-start font-bold";
+      taskTitle.textContent = task.task;
 
-    const taskDate = document.createElement("p");
-    taskDate.className =
-      "flex justify-start text-sm font-light text-gray-500 mt-2";
-    taskDate.innerHTML = `<i class="bi bi-calendar" style="margin-right: 10px"></i>${months[month]}`;
+      const taskDate = document.createElement("p");
+      taskDate.className =
+        "flex justify-start text-sm font-light text-gray-500 mt-2";
+      taskDate.innerHTML = `<i class="bi bi-calendar" style="margin-right: 10px"></i>${day} ${months[month]}`;
 
     // append elements
 
