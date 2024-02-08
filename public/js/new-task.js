@@ -22,7 +22,7 @@ newTask.addEventListener("click", async () => {
     body: JSON.stringify(data),
   };
 
-  const response = await fetch("/api", options);
+  const response = await fetch("/api/tasks", options);
   const json = await response.json();
-  //   console.log(json);
+  console.log(json);
 });
