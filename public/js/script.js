@@ -120,38 +120,65 @@ async function getTasks() {
 }
 
 const todoItem = document.querySelectorAll(".todo-items");
-let items = [];
+let items = getStoreditems();
 //
 function getTodo(task, taskId) {
+  // toggle actions
+  toggleActions();
+  // check if task is selected
+  if (isTaskSelected(taskId)) {
+    const checkBox = task.querySelector("input");
+    checkBox.checked = !checkBox.checked;
+    task.classList.toggle("border-2");
+    task.classList.toggle("border-gray-700");
+    task.classList.toggle("bg-gray-100");
+  }
+
   task.addEventListener("click", () => {
-    
-    
     // set check box to checked
     const checkBox = task.querySelector("input");
     checkBox.checked = !checkBox.checked;
+    task.classList.toggle("border-2");
+    task.classList.toggle("border-gray-700");
     task.classList.toggle("bg-gray-100");
+
     // if items was selected remove it
     if (taskIndex(taskId) !== -1) {
       items.splice(taskIndex(taskId), 1);
     } else {
       items.push(taskId);
     }
-    console.clear()
-    console.log(items.length);
-    console.log(items);
-    if (items.length > 0) { 
-      deleteTask.classList.remove("hidden");
-    } else {
-      deleteTask.classList.add("hidden");
-    }
-  
-  });
-  // items.addEventListener("click", () => {
 
-  // });
+    // update local storage
+    updateStoredItems();
+
+    // toggle actions
+    toggleActions();
+  });
+}
+
+function isTaskSelected(taskId) {
+  return items.includes(taskId);
 }
 
 function taskIndex(taskId) {
-  return items.indexOf(taskId)
+  return items.indexOf(taskId);
 }
 
+function updateStoredItems() {
+  localStorage.setItem("selectedTasks", JSON.stringify(items));
+}
+
+function getStoreditems() {
+  return JSON.parse(localStorage.getItem("selectedTasks")) || [];
+}
+
+function toggleActions() {
+  if (items.length > 0) {
+    deleteTask.classList.remove("hidden");
+    completeTask.classList.remove("hidden");
+  } else {
+    deleteTask.classList.add("hidden");
+    completeTask.classList.add("hidden");
+  }
+}
