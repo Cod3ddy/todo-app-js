@@ -1,6 +1,10 @@
 // const newTask = document.getElementById("new-task");
 const taskContainer = document.getElementById("task-container");
 
+// actions
+const deleteTask = document.getElementById("delete-task");
+const completeTask = document.getElementById("mark-as-done");
+
 // object for months
 const months = {
   0: "Jan",
@@ -120,23 +124,34 @@ let items = [];
 //
 function getTodo(task, taskId) {
   task.addEventListener("click", () => {
+    
+    
     // set check box to checked
     const checkBox = task.querySelector("input");
     checkBox.checked = !checkBox.checked;
     task.classList.toggle("bg-gray-100");
     // if items was selected remove it
-    if (isTaskSelected(taskId)) {
-      items.pop(taskId);
+    if (taskIndex(taskId) !== -1) {
+      items.splice(taskIndex(taskId), 1);
     } else {
       items.push(taskId);
     }
+    console.clear()
+    console.log(items.length);
+    console.log(items);
+    if (items.length > 0) { 
+      deleteTask.classList.remove("hidden");
+    } else {
+      deleteTask.classList.add("hidden");
+    }
+  
   });
   // items.addEventListener("click", () => {
 
   // });
 }
 
-function isTaskSelected(task) {
-  return items.includes(task);
+function taskIndex(taskId) {
+  return items.indexOf(taskId)
 }
 
